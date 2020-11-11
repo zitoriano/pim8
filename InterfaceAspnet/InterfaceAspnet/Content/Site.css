@@ -1,0 +1,80 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+h2.title {
+    margin-bottom: 20px;
+}
+
+.filter {
+    background: #cacaca2e;
+    padding: 20px;
+    border-bottom: #ccc 1px solid;
+    margin-bottom: 30px;
+}
+
+h3.title {
+    color: #6f6f6f;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: #ccc 1px dashed;
+}
+
+dl > dt {
+    text-align: right;
+    margin: 10px 0;
+}
+
+dl > dd {
+    margin: 10px 0;
+}
+
+.group-fields > .close-div {
+    display: none;
+}
+
+.group-fields {
+    padding: 10px;
+}
+
+.group-fields-n {
+    padding: 20px 10px 10px 10px;
+    margin-bottom: 10px;
+    border-top: #ccc 1px dashed;
+}
+
+    .group-fields-n > .close-div {
+        display: block;
+    }
+
+.hover {
+    background: #f3f3f3;
+    border-top: #000 1px dashed;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+
+    .body-content {
+        padding: 0;
+    }
+}

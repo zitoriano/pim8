@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Cadastro de Pessoas</string>
+    <string name="title_activity_add_people_form">Cadastrar Pessoas</string>
+    <string name="title_activity_add_phone_form">Cadastrar Telefone</string>
+</resources>
