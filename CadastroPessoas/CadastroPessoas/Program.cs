@@ -17,29 +17,29 @@ namespace CadastroPessoas
             Pessoa pessoa = new Pessoa()
             {
                 Id = 1,
-                Nome = "Guilherme Zenatte",
+                Nome = "Diego Araujo Rocha",
                 CPF = 12345678901,
                 Endereco = new Endereco()
                 {
-                    Logradouro = "Rua dos Crisântemos",
-                    Numero = 75,
-                    CEP = 13610000,
-                    Bairro = "Centro",
-                    Cidade = "São Paulo",
-                    Estado = "SP"
+                    Logradouro = "Vila Dona Leopoldina",
+                    Numero = 1237,
+                    CEP = 60110010,
+                    Bairro = "Aldeota",
+                    Cidade = "Fortaleza",
+                    Estado = "CE"
                 },
                 Telefones = new List<Telefone>()
                 {
                     new Telefone()
                     {
-                        Numero = 44442222,
-                        DDD = 11,
+                        Numero = 56157859,
+                        DDD = 85,
                         TipoId = DAO.Telefone.RESIDENCIAL
                     },
                     new Telefone()
                     {
-                        Numero = 944442222,
-                        DDD = 11,
+                        Numero = 956157859,
+                        DDD = 85,
                         TipoId = DAO.Telefone.CELULAR
                     }
                 }
@@ -52,7 +52,7 @@ namespace CadastroPessoas
             pessoa = new DAO.Pessoa().FindByCPF(12345678901);
 
             // Modifica o nome da pessoa
-            pessoa.Nome = "Guilherme Zanette";
+            pessoa.Nome = "Diego A Rocha";
 
             // Grava as modificações no banco novamente
             new DAO.Pessoa().Update(pessoa);
