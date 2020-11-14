@@ -59,15 +59,15 @@ public class PersonAdapter extends BaseAdapter {
                     person.getCpf().toString()));
 
             txtRowFone.setText(String.format("(%s) %s - %s",
-                    11L,
-                    30535599L,
-                    "residencial"));
+                    person.getPhones().get(0).getDDD(),
+                    person.getPhones().get(0).getNumero(),
+                    person.getPhones().get(0).getTipo()));
 
             txtRowEndereco.setText(String.format("%s, %s - %s / %s",
-                    "Rua Bezerra de Menezes",
-                    174L,
-                    "Leme",
-                    "São Paulo"));
+                    person.getAddress().getLogradouro(),
+                    person.getAddress().getNumero(),
+                    person.getAddress().getCidade(),
+                    person.getAddress().getEstado()));
         }
 
         return row;

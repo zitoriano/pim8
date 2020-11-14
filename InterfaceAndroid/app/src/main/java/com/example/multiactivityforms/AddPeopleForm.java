@@ -67,11 +67,11 @@ public class AddPeopleForm extends AppCompatActivity {
         // create address
         Address address1 = new Address();
         address1.setId(1L);
-        address1.setLogradouro("Rua Bezerra de Menezes");
+        address1.setLogradouro("Rua Carlos Cochi");
         address1.setNumero(174L);
-        address1.setCEP(13611251L);
-        address1.setBairro("Santa Rita");
-        address1.setCidade("Leme");
+        address1.setCEP(13500000L);
+        address1.setBairro("Centro");
+        address1.setCidade("São Carlos");
         address1.setEstado("São Paulo");
 
         addresses.add(address1);
@@ -88,13 +88,13 @@ public class AddPeopleForm extends AppCompatActivity {
         Phone phone1 = new Phone();
         phone1.setId(1L);
         phone1.setDDD(11L);
-        phone1.setNumero(954770271L);
+        phone1.setNumero(954771234L);
         phone1.setTipo("celular");
 
         Phone phone2 = new Phone();
         phone2.setId(1L);
         phone2.setDDD(11L);
-        phone2.setNumero(30532525L);
+        phone2.setNumero(305211111L);
         phone2.setTipo("residencial");
 
         telefones.add(phone1);
