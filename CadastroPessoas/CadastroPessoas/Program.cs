@@ -13,7 +13,7 @@ namespace CadastroPessoas
     {
         static void Main(string[] args)
         {
-            // Objeto Pessoa
+            // Cria um objeto pessoa com os todos os dados
             Pessoa pessoa = new Pessoa()
             {
                 Id = 1,
@@ -21,7 +21,6 @@ namespace CadastroPessoas
                 CPF = 12345678901,
                 Endereco = new Endereco()
                 {
-                    Id = 1,
                     Logradouro = "Rua dos Crisântemos",
                     Numero = 75,
                     CEP = 13610000,
@@ -33,14 +32,12 @@ namespace CadastroPessoas
                 {
                     new Telefone()
                     {
-                        Id = 1,
                         Numero = 44442222,
                         DDD = 11,
                         TipoId = DAO.Telefone.RESIDENCIAL
                     },
                     new Telefone()
                     {
-                        Id = 1,
                         Numero = 944442222,
                         DDD = 11,
                         TipoId = DAO.Telefone.CELULAR
@@ -48,9 +45,20 @@ namespace CadastroPessoas
                 }
             };
 
-            // Do Something...
+            // Grava o dados no banco
+            new DAO.Pessoa().Insert(pessoa);
 
-            Console.ReadKey();
+            // Localiza a pessoa por CPF
+            pessoa = new DAO.Pessoa().FindByCPF(12345678901);
+
+            // Modifica o nome da pessoa
+            pessoa.Nome = "Guilherme Zanette";
+
+            // Grava as modificações no banco novamente
+            new DAO.Pessoa().Update(pessoa);
+
+            // Printa o nome da pessoa modificado
+            Console.WriteLine(pessoa.Nome);
         }
     }
 }

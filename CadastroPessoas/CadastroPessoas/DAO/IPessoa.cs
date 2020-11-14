@@ -9,6 +9,7 @@ namespace CadastroPessoas.DAO
     interface IPessoa
     {
         Models.Pessoa Find(int Id);
+        Models.Pessoa FindByCPF(long CPF);
         bool Insert(Models.Pessoa pessoa);
         bool Update(Models.Pessoa pessoa);
         bool Delete(Models.Pessoa pessoa);

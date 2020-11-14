@@ -68,6 +68,55 @@ namespace CadastroPessoas.DAO
             return pessoa;
         }
 
+        public Models.Pessoa FindByCPF(long CPF)
+        {
+            Models.Pessoa pessoa = new Models.Pessoa();
+
+            var sql = "SELECT * FROM Pessoa WHERE cpf = @CPF";
+
+            try
+            {
+                // Create connection
+                DbCommand cmd = ConnFactory.GetFactory().CreateCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = sql;
+
+                // Set Parameteres
+                cmd.Parameters.Add(
+                    ConnFactory.CreateParam(cmd, "CPF", CPF));
+
+                cmd.ExecuteNonQuery();
+
+                // Data Set
+                DbDataReader data = cmd.ExecuteReader();
+
+                // Get Rows and Read Data
+                if (data.HasRows)
+                {
+                    while (data.Read())
+                    {
+                        pessoa.Id = data.GetInt32(0);
+                        pessoa.Nome = data.GetString(1);
+                        pessoa.CPF = data.GetInt64(2);
+                        pessoa.EnderecoId = Convert.ToInt32(data.GetInt32(3));
+                        pessoa.Telefones = new Telefone().GetPhones(pessoa.Id);
+
+                        if (pessoa.EnderecoId > 0)
+                        {
+                            pessoa.Endereco = new Endereco().Find(pessoa.EnderecoId);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return pessoa;
+        }
+
         public bool Insert(Models.Pessoa pessoa)
         {
             string sql = "INSERT INTO " +
@@ -77,6 +126,12 @@ namespace CadastroPessoas.DAO
 
             try
             {
+                if (pessoa.Endereco.Id == 0 && pessoa.Endereco.Logradouro != null)
+                {
+                    // Register Adress
+                    pessoa.Endereco.Id = new DAO.Endereco().Insert(pessoa.Endereco);
+                }
+
                 // Open Connection
                 DbCommand cmd = ConnFactory.GetFactory().CreateCommand();
                 cmd.Connection = conn;
@@ -88,7 +143,7 @@ namespace CadastroPessoas.DAO
                 cmd.Parameters.Add(
                     ConnFactory.CreateParam(cmd, "cpf", pessoa.CPF));
                 cmd.Parameters.Add(
-                    ConnFactory.CreateParam(cmd, "enderecoId", pessoa.EnderecoId));
+                    ConnFactory.CreateParam(cmd, "enderecoId", pessoa.Endereco.Id));
 
                 //cmd.ExecuteNonQuery();
                 object Id = cmd.ExecuteScalar();

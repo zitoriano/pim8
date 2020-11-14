@@ -28,7 +28,7 @@ namespace CadastroPessoas.DAO
                 case MYSQL:
                     try
                     {
-                        string connectionString = "Server=10.0.0.12;" +
+                        string connectionString = "Server=10.0.0.15;" +
                             "Uid=root;" +
                             "Pwd=123456;" +
                             "Database=pim8;" +
